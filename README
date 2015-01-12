@@ -255,9 +255,9 @@ Enjoy cJSON!
 cJSON-LAX by Mike Kasprzak (2015)
 
 
-cJSON-LAX or "cJSON Relaxed" is a modified version of cJSON. This code is nearly 
-identical to the 2013-08-19 build of cJSON, but it includes enhancements useful
-to users who are manually editing JSON files.
+cJSON-LAX or "cJSON Relaxed" is a modified version of cJSON. This code is
+nearly identical to the 2013-08-19 build of cJSON, but it includes
+enhancements useful to users who are manually editing JSON files.
 
 Changes include:
 - C style /* block comments */
