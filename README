@@ -267,8 +267,8 @@ Arrays and Objects less of a pain. And comments... do I really need to explain
 comments? :)
 
 NOTES: The enhancements provided by cJSON-LAX are for READING ONLY! They are
-discarded as the file loads. cJSON does not report errors. A file simply loads
-or fails. cJSON only supports ASCII text files. UTF-8 strings will fail.
+discarded as the file loads. cJSON does not report errors; A file simply loads
+or fails. cJSON only supports ASCII. UTF-8 will fail.
 
 
 Included in the package is a new test program "mike-test.c". Build it with:
