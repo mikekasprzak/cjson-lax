@@ -18,6 +18,8 @@
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
+
+  This contains changes by Mike Kasprzak (2015). See bottom of file for details.
 */
 
 Welcome to cJSON.
@@ -245,3 +247,38 @@ Enjoy cJSON!
 
 
 - Dave Gamble, Aug 2009
+
+
+* * *
+
+cJSON-LAX by Mike Kasprzak (2015)
+
+cJSON-LAX or "cJSON Relaxed" is an enhanced version of cJSON by Dave Gamble.
+This code is nearly identical to the 2013-08-19 build of cJSON, but include 
+enhancements useful to users who are manually editing JSON files.
+
+Changes include:
+- Support for trailing commas on the LAST ITEM in objects and arrays.
+
+Trailing commas are NOT part of the JSON spec, but it makes copy+pasting
+parts of Arrays and Objects less of a hassle.
+
+TODO: Add block comment /* */ support.
+
+NOTE: The enhancements provided by cJSON-LAX are for READING ONLY! Generally
+speaking, everything new is discarded upon load. cJSON-LAX will only output
+correctly formatted JSON, not modified JSON allowed by the syntax changes.
+
+
+Include in the package is a new test program "mike-test.c". Build it with:
+
+  gcc mike-test.c cJSON.c -lm -o mike-test
+
+Then you can feed it a JSON file (find a bunch under the tests folder).
+cJSON-LAX breaks the strict rules of the JSON spec, so mike-test can be
+used to see what cJSON sees internally (despite the input).
+
+  ./mike-test tests/test6
+
+The file tests/test6 would be illegal in the standard version of cJSON.
+However, in cJSON-LAX, it is allowed.

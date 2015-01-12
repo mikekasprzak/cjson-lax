@@ -334,9 +334,12 @@ static const char *parse_array(cJSON *item,const char *value)
 	while (*value==',')
 	{
 		cJSON *new_item;
+		value = skip(value+1);	/* MK - skip the comma */
+		if (!value) return 0;	/* MK - memory fail */
+		if (*value==']') break;	/* MK - bail if next character is a closing brace */
 		if (!(new_item=cJSON_New_Item())) return 0; 	/* memory fail */
 		child->next=new_item;new_item->prev=child;child=new_item;
-		value=skip(parse_value(child,skip(value+1)));
+		value=skip(parse_value(child,value)); 	/* MK - moved the comma skip above */
 		if (!value) return 0;	/* memory fail */
 	}
 
@@ -424,9 +427,12 @@ static const char *parse_object(cJSON *item,const char *value)
 	while (*value==',')
 	{
 		cJSON *new_item;
+		value = skip(value+1);	/* MK - skip the comma */
+		if (!value) return 0;	/* MK - memory fail */
+		if (*value=='}') break;	/* MK - bail if next character is a closing brace */
 		if (!(new_item=cJSON_New_Item()))	return 0; /* memory fail */
 		child->next=new_item;new_item->prev=child;child=new_item;
-		value=skip(parse_string(child,skip(value+1)));
+		value=skip(parse_string(child,value));	/* MK - moved the comma skip above */
 		if (!value) return 0;
 		child->string=child->valuestring;child->valuestring=0;
 		if (*value!=':') {ep=value;return 0;}	/* fail! */
