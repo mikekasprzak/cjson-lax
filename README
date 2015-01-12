@@ -1,5 +1,7 @@
 /*
   Copyright (c) 2009 Dave Gamble
+  
+  with enhancements by Mike Kasprzak (see bottom of file)
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -18,8 +20,6 @@
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
-
-  This contains changes by Mike Kasprzak (2015). See bottom of file for details.
 */
 
 Welcome to cJSON.
@@ -249,25 +249,32 @@ Enjoy cJSON!
 - Dave Gamble, Aug 2009
 
 
-* * *
+
+/* ------------------------------------------------------------------------- */
 
 cJSON-LAX by Mike Kasprzak (2015)
 
-cJSON-LAX or "cJSON Relaxed" is an enhanced version of cJSON by Dave Gamble.
-This code is nearly identical to the 2013-08-19 build of cJSON, but include 
-enhancements useful to users who are manually editing JSON files.
+
+cJSON-LAX or "cJSON Relaxed" is a modified version of cJSON. This code is nearly 
+identical to the 2013-08-19 build of cJSON, but it includes enhancements useful
+to users who are manually editing JSON files.
 
 Changes include:
-- Support for trailing commas on the LAST ITEM in objects and arrays.
+- C style /* block comments */
+- Support for trailing commas on the LAST ITEM in objects and arrays
 
 Trailing commas are NOT part of the JSON spec, but it makes copy+pasting
-parts of Arrays and Objects less of a hassle.
+parts of Arrays and Objects less of a pain.
 
-TODO: Add block comment /* */ support.
+And comments... do I really need to explain comments? :)
 
-NOTE: The enhancements provided by cJSON-LAX are for READING ONLY! Generally
-speaking, everything new is discarded upon load. cJSON-LAX will only output
-correctly formatted JSON, not modified JSON allowed by the syntax changes.
+NOTE: The enhancements provided by cJSON-LAX are for READING ONLY! They are
+discarded as the file loads.
+
+
+This said, cJSON isn't the best choice of a parser for rapid JSON development.
+It's designed for simplicity, low overhead and speed (?). It lacks helpful
+features like reporting errors (lines, what you messed up), but it works.
 
 
 Include in the package is a new test program "mike-test.c". Build it with:
