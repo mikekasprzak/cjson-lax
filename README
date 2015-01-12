@@ -266,12 +266,12 @@ Tail commas are NOT part of the JSON spec, but it makes copy+pasting parts of
 Arrays and Objects less of a pain. And comments... do I really need to explain
 comments? :)
 
-NOTE: The enhancements provided by cJSON-LAX are for READING ONLY! They are
+NOTES: The enhancements provided by cJSON-LAX are for READING ONLY! They are
 discarded as the file loads. cJSON does not report errors. A file simply loads
-or fails.
+or fails. cJSON only supports ASCII text files. UTF-8 strings will fail.
 
 
-Include in the package is a new test program "mike-test.c". Build it with:
+Included in the package is a new test program "mike-test.c". Build it with:
 
   gcc mike-test.c cJSON.c -lm -o mike-test
 
