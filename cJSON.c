@@ -1,6 +1,8 @@
 /*
   Copyright (c) 2009 Dave Gamble
 
+  with enhancements by Mike Kasprzak (2015)
+
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
@@ -262,10 +264,11 @@ static const char *skip(const char *in) {
 	if ( !in ) return 0;
 
 	while (*in) {
-		/* Comment Found */
+		/* Block Comment Found! */
 		if ( (in[0]=='/') && (in[1]=='*') ) {
 			in+=2;
 			while ( *in ) {
+				/* Exit comment on 'star slash': */
 				if ( (in[0]=='*') && (in[1]=='/') ) break;
 				in++;
 			}
@@ -275,6 +278,19 @@ static const char *skip(const char *in) {
 
 			in++;
 		}
+		/* Line Comment Found! */
+		else if ( (in[0]=='/') && (in[1]=='/') ) {
+			in+=2;
+			while ( *in ) {
+				/* Exit comment on Carriage Return or Newline */
+				if ( (in[0]==13) || (in[0]==10) ) break;
+				in++;
+			}
+			
+			/* Bail if we hit null */
+			if ( *in == 0 ) return 0;
+		}
+		/* Non-whitespace/control character found. Bail out... */
 		else if ( (unsigned char)*in > 32 ) break;
 		
 		in++;

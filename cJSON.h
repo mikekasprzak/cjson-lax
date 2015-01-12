@@ -1,5 +1,7 @@
 /*
   Copyright (c) 2009 Dave Gamble
+
+  with enhancements by Mike Kasprzak (2015)
  
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal

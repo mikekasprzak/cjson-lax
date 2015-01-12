@@ -1,7 +1,7 @@
 /*
   Copyright (c) 2009 Dave Gamble
   
-  with enhancements by Mike Kasprzak (see bottom of file)
+  with enhancements by Mike Kasprzak (2015)
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
@@ -255,26 +255,20 @@ Enjoy cJSON!
 cJSON-LAX by Mike Kasprzak (2015)
 
 
-cJSON-LAX or "cJSON Relaxed" is a modified version of cJSON. This code is
-nearly identical to the 2013-08-19 build of cJSON, but it includes
-enhancements useful to users who are manually editing JSON files.
+cJSON-LAX or "cJSON Relaxed" is a modified version of cJSON (2013-08-19), with
+practical enhancements useful to users who are manually editing JSON files.
 
 Changes include:
-- C style /* block comments */
-- Support for trailing commas on the LAST ITEM in objects and arrays
+- C style /* Block Comments */ and C++ style // Line Comments
+- Support for a tail comma on the LAST ITEM in Objects and Arrays
 
-Trailing commas are NOT part of the JSON spec, but it makes copy+pasting
-parts of Arrays and Objects less of a pain.
-
-And comments... do I really need to explain comments? :)
+Tail commas are NOT part of the JSON spec, but it makes copy+pasting parts of 
+Arrays and Objects less of a pain. And comments... do I really need to explain
+comments? :)
 
 NOTE: The enhancements provided by cJSON-LAX are for READING ONLY! They are
-discarded as the file loads.
-
-
-This said, cJSON isn't the best choice of a parser for rapid JSON development.
-It's designed for simplicity, low overhead and speed (?). It lacks helpful
-features like reporting errors (lines, what you messed up), but it works.
+discarded as the file loads. cJSON does not report errors. A file simply loads
+or fails.
 
 
 Include in the package is a new test program "mike-test.c". Build it with:
@@ -283,7 +277,7 @@ Include in the package is a new test program "mike-test.c". Build it with:
 
 Then you can feed it a JSON file (find a bunch under the tests folder).
 cJSON-LAX breaks the strict rules of the JSON spec, so mike-test can be
-used to see what cJSON sees internally (despite the input).
+used to see what cJSON_Parse will give you.
 
   ./mike-test tests/test6
 

@@ -9,7 +9,7 @@
 		"great",/* score one for Jiibu*/
 	],
 	/**/
-	"purble":true,
+	"purble":false,//true,
 	"ZANGEIF":[
 		{ "spoo":10,/*"chews":25*/"cool":null },
 		{ "spoo":40,"chews":22/*"cool":null*/ },
